@@ -13,7 +13,7 @@ pipeline {
           steps {
             checkout([
               $class: 'GitSCM',
-              branches: [[name: "**" ]],
+              branches: [[name: master ]],
               userRemoteConfigs: [[
                 url: 'https://github.com/hwchiu/test.git',
                 credentialsId: '',
