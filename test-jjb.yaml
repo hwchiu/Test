@@ -34,6 +34,6 @@
           build-node: 'ubuntu:18.04'
       - 'hwchiu-test':
           name: 'hwchiu-jjb'
-          build-node: 'ubuntu:20.04'
+          build-node: 'ubuntu:18.04'
           jenkins-file: Jenkinsfile.jjb
           branch: 'origin/master'
