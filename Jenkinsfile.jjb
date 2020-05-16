@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        JJB_config = credentials('jjb-config')
+        JJB_CONFIG = credentials('jjb-config')
     }
     triggers {
         githubPush()
