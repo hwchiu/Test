@@ -1,8 +1,1 @@
-dasda
-XDD
-xxxx
-ㄡ........
-ㄆqqq
-ㄏcccc
-asdadds
-c
+jjb only!!
