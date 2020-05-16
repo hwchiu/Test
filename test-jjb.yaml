@@ -5,7 +5,7 @@
          url: https://github.com/hwchiu/test
          branches:
            - ":origin/develop*"
-           - "master"
+           - "origin/master"
 
 - job-template:
     id: hwchiu-test
