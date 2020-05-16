@@ -6,7 +6,7 @@ pipeline {
         }
     }
     environment {
-        JJB_CONFIG = credentials('jjb-config')
+        JJB_CONFIG = credentials('jjb_config')
     }
     triggers {
         githubPush()
@@ -36,6 +36,8 @@ pipeline {
         stage('Test') {
             steps {
                 sh '''
+                echo $JJB_CONFIG
+                cat $JJB_CONFIG
                 jenkins-jobs -conf $JJB_CONFIG test test-jjb.yaml
                 '''
             }
