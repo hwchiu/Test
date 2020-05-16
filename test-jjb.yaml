@@ -3,7 +3,7 @@
     name: '{name}'
     project-type: pipeline
     jenkins-file: Jenkinsfile
-    branch: **/develop/*
+    branch: "**/develop/*"
     pipeline-scm:
       scm:
         - git:
