@@ -1,0 +1,39 @@
+- scm:
+    name: project-scm
+    scm:
+      - git:
+         url: https://github.com/hwchiu/test
+         branches:
+           - ":origin/develop*"
+           - "master"
+
+- job-template:
+    id: hwchiu-test
+    name: '{name}'
+    project-type: pipeline
+    pipeline-scm:
+      scm:
+        - project-scm
+    properties:
+      - github:
+         url: "https://github.com/hwchiu/test/"
+    triggers:
+      - github
+    parameters:
+      - string:
+          name: buildNode
+          default: 'ubuntu:18.04'
+          description: 'Pod management node'
+
+- project:
+    name: hwchiu-jjb-test
+    jobs:
+      - 'hwchiu-test':
+          name: 'hwchiu-1'
+          build-node: 'ubuntu:16.04'
+      - 'hwchiu-test':
+          name: 'hwchiu-2'
+          build-node: 'ubuntu:18.04'
+      - 'hwchiu-test':
+          name: 'hwchiu-3'
+          build-node: 'ubuntu:20.04'
