@@ -29,7 +29,7 @@ pipeline {
                 sh '''
                 apt-get update -y
                 apt-get install -y python-pip
-                pip install --user jenkins-job-builder
+                pip install jenkins-job-builder
                 '''
             }
         }
