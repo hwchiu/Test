@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        docker { image 'ubuntu:18.04' 
+        docker { image '${params.buildNode}'
                   args '-u root:root -v $HOME/workspace/myproject:/myproject'
             
         }
