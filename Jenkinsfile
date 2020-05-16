@@ -5,21 +5,15 @@ pipeline {
             
         }
     }
-    triggers {
-        githubPush()
-    }    
+    options {
+        skipDefaultCheckout(true)
+    }
     stages {
-        stage('Checkout SCM') {
-          steps {
-            checkout([
-              $class: 'GitSCM',
-              branches: [[name: ":^(origin/master|origin/develop.*)" ]],
-              userRemoteConfigs: [[
-                url: 'https://github.com/hwchiu/test.git',
-                credentialsId: '',
-              ]]
-             ])
-           }
+       stage('Checkout SCM') {
+            steps {
+                echo '> Checking out the source control ...'
+                checkout scm
+            }
         }
         stage('Test') {
             steps {

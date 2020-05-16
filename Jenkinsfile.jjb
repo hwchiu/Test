@@ -5,24 +5,18 @@ pipeline {
             
         }
     }
+    options {
+        skipDefaultCheckout(true)
+    }
     environment {
         JJB_CONFIG = credentials('jjb_config')
     }
-    triggers {
-        githubPush()
-    }    
     stages {
-        stage('Checkout SCM') {
-          steps {
-            checkout([
-              $class: 'GitSCM',
-              branches: [[name: "origin/master" ]],
-              userRemoteConfigs: [[
-                url: 'https://github.com/hwchiu/test.git',
-                credentialsId: '',
-              ]]
-             ])
-           }
+       stage('Checkout SCM') {
+            steps {
+                echo '> Checking out the source control ...'
+                checkout scm
+            }
         }
         stage('Build Packages') {
             steps {
