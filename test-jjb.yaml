@@ -3,12 +3,13 @@
     name: '{name}'
     project-type: pipeline
     jenkins-file: Jenkinsfile
+    branch: **/develop/*
     pipeline-scm:
       scm:
         - git:
            url: https://github.com/hwchiu/test
            branches:
-             - "**/develop/*"
+             - '{branch}'
       script-path: '{jenkins-file}'
 
     properties:
@@ -35,3 +36,4 @@
           name: 'hwchiu-jjb'
           build-node: 'ubuntu:20.04'
           jenkins-file: Jenkinsfile.jjb
+          branch: 'origin/master'
