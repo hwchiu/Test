@@ -1,28 +1,25 @@
-- scm:
-    name: project-scm
-    scm:
-      - git:
-         url: https://github.com/hwchiu/test
-         branches:
-           - ":origin/develop*"
-           - "origin/master"
-
 - job-template:
     id: hwchiu-test
     name: '{name}'
     project-type: pipeline
+    jenkins-file: Jenkinsfile
     pipeline-scm:
       scm:
-        - project-scm
+        - git:
+           url: https://github.com/hwchiu/test
+           branches:
+             - "**/develop/*"
+      script-path: '{jenkins-file}'
+
     properties:
       - github:
-         url: "https://github.com/hwchiu/test/"
+          url: "https://github.com/hwchiu/test/"
     triggers:
       - github
     parameters:
       - string:
           name: buildNode
-          default: 'ubuntu:18.04'
+          default: '{build-node}'
           description: 'Pod management node'
 
 - project:
@@ -35,5 +32,6 @@
           name: 'hwchiu-2'
           build-node: 'ubuntu:18.04'
       - 'hwchiu-test':
-          name: 'hwchiu-3'
+          name: 'hwchiu-jjb'
           build-node: 'ubuntu:20.04'
+          jenkins-file: Jenkinsfile.jjb
