@@ -35,14 +35,16 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'test'
+                sh '''
                 jenkins-jobs -conf $JJB_CONFIG test test-jjb.yaml
+                '''
             }
         }
         stage('Deploy') {
             steps {
-                echo 'test'
+                sh '''
                 jenkins-jobs -conf $JJB_CONFIG update test-jjb.yaml
+                '''
             }
         }
 
